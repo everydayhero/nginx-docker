@@ -1,11 +1,11 @@
 FROM ubuntu:14.04
 MAINTAINER EverydayHero <edh-dev@everydayhero.com.au>
 
-ENV APT_UPDATED 20150121
-RUN apt-get update
-RUN apt-get install -y nginx
-ADD http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz /etc/geoip/
-RUN gunzip /etc/geoip/GeoIP.dat.gz
+RUN apt-get update && apt-get install -y  \
+        geoip-database \
+        libgeoip1 \
+        nginx-full \
+    && rm -rf /var/lib/apt/lists/*
 
 EXPOSE 80
 
