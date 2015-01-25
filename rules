@@ -36,6 +36,7 @@ override_dh_auto_build:
 		--with-http_gunzip_module \
 		--with-http_gzip_static_module \
 		--with-http_realip_module \
+		--with-http_ssl_module \
 		--with-http_stub_status_module \
 		--with-http_sub_module \
 		--with-ipv6 \
@@ -70,6 +71,7 @@ configure_debug:
 		--with-http_gunzip_module \
 		--with-http_gzip_static_module \
 		--with-http_realip_module \
+		--with-http_ssl_module \
 		--with-http_stub_status_module \
 		--with-http_sub_module \
 		--with-ipv6 \
