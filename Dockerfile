@@ -39,7 +39,9 @@ ADD http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.
 RUN gunzip /etc/geoip/GeoIP.dat.gz
 RUN cp /etc/geoip/GeoIP.dat /usr/share/GeoIP/GeoIP.dat
 
+ADD test /usr/local/bin/test
+ADD serve /usr/local/bin/serve
+
 EXPOSE 80 443
 
-CMD ["/usr/sbin/nginx","-c","/nginx-config/nginx.conf"]
-
+CMD ["serve"]
