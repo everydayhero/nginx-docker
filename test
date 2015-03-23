@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -e
+
+sed s/STATSD_SERVER/$STATSD_SERVER/g /nginx-config/nginx.conf.template > /nginx-config/nginx.conf
+
+/usr/sbin/nginx -t -c /nginx-config/nginx.conf
