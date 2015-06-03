@@ -1,11 +1,11 @@
-FROM debian:wheezy
+FROM debian:jessie
 MAINTAINER EverydayHero <edh-dev@everydayhero.com.au>
 
 RUN apt-key adv --keyserver pgp.mit.edu --recv-keys 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62
-RUN echo "deb-src http://nginx.org/packages/mainline/debian/ wheezy nginx" >> /etc/apt/sources.list
+RUN echo "deb-src http://nginx.org/packages/mainline/debian/ jessie nginx" >> /etc/apt/sources.list
 
-ENV NGINX_VERSION 1.7.10-1~wheezy
-ENV NGINX_SOURCE_FOLDER nginx-1.7.10
+ENV NGINX_VERSION 1.9.1-1~jessie
+ENV NGINX_SOURCE_FOLDER nginx-1.9.1
 
 RUN apt-get update && apt-get install -y \
   adduser \
