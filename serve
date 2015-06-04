@@ -2,6 +2,6 @@
 
 set -e
 
-sed s/STATSD_SERVER/$STATSD_SERVER/g /nginx-config/nginx.conf.template > /nginx-config/nginx.conf
+envtpl /nginx-config/servers/*.tpl
 
 /usr/sbin/nginx -c /nginx-config/nginx.conf
