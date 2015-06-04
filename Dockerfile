@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y \
   geoip-database \
   libgeoip-dev \
   libgeoip1 \
+  python \
   unzip
 
 RUN git clone https://github.com/streadway/ngx_txid.git /tmp/ngx_txid
@@ -23,10 +24,13 @@ RUN apt-get build-dep -y nginx=${NGINX_VERSION}
 # TODO use a patch, rather than a replacement 'rules'
 COPY rules /tmp/rules
 COPY update_changelog.sh /tmp/update_changelog.sh
+COPY get-pip.py /tmp/get-pip.py
 
 RUN cd /tmp && apt-get source nginx=${NGINX_VERSION} && \
   cp rules /tmp/${NGINX_SOURCE_FOLDER}/debian/rules && \
   /tmp/update_changelog.sh
+
+RUN python /tmp/get-pip.py
 
 RUN cd /tmp/${NGINX_SOURCE_FOLDER} && \
   dpkg-buildpackage -uc -b
