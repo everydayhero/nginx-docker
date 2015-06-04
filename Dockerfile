@@ -30,7 +30,7 @@ RUN cd /tmp && apt-get source nginx=${NGINX_VERSION} && \
   cp rules /tmp/${NGINX_SOURCE_FOLDER}/debian/rules && \
   /tmp/update_changelog.sh
 
-RUN python /tmp/get-pip.py
+RUN python /tmp/get-pip.py && pip install envtpl
 
 RUN cd /tmp/${NGINX_SOURCE_FOLDER} && \
   dpkg-buildpackage -uc -b
