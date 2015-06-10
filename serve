@@ -3,5 +3,6 @@
 set -e
 
 envtpl /nginx-config/servers/*.tpl
+envtpl /nginx-config/nginx.tpl
 
 /usr/sbin/nginx -c /nginx-config/nginx.conf
