@@ -2,6 +2,6 @@
 
 set -e
 
-envtpl /nginx-config/nginx.conf.tpl
+envtpl /nginx-config/nginx.conf.tpl --keep-template
 
 /usr/sbin/nginx -t -c /nginx-config/nginx.conf
