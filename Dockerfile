@@ -4,8 +4,8 @@ MAINTAINER EverydayHero <edh-dev@everydayhero.com.au>
 RUN apt-key adv --keyserver pgp.mit.edu --recv-keys 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62
 RUN echo "deb-src http://nginx.org/packages/mainline/debian/ jessie nginx" >> /etc/apt/sources.list
 
-ENV NGINX_VERSION 1.9.2-1~jessie
-ENV NGINX_SOURCE_FOLDER nginx-1.9.2
+ENV NGINX_VERSION 1.9.4-1~jessie
+ENV NGINX_SOURCE_FOLDER nginx-1.9.4
 
 RUN apt-get update && apt-get install -y \
   adduser \
@@ -17,17 +17,17 @@ RUN apt-get update && apt-get install -y \
   python \
   unzip
 
-RUN git clone https://github.com/streadway/ngx_txid.git /tmp/ngx_txid
+RUN git clone https://github.com/streadway/ngx_txid.git /tmp/nginx-txid
 RUN git clone https://github.com/zebrafishlabs/nginx-statsd.git /tmp/nginx-statsd
 RUN apt-get build-dep -y nginx=${NGINX_VERSION}
 
 # TODO use a patch, rather than a replacement 'rules'
-COPY rules /tmp/rules
+COPY rules.patch /tmp/rules.patch
 COPY update_changelog.sh /tmp/update_changelog.sh
 COPY get-pip.py /tmp/get-pip.py
 
 RUN cd /tmp && apt-get source nginx=${NGINX_VERSION} && \
-  cp rules /tmp/${NGINX_SOURCE_FOLDER}/debian/rules && \
+  patch /tmp/${NGINX_SOURCE_FOLDER}/debian/rules < /tmp/rules.patch && \
   /tmp/update_changelog.sh
 
 RUN python /tmp/get-pip.py && pip install envtpl
