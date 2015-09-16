@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y \
   python \
   unzip
 
-RUN git clone https://github.com/streadway/ngx_txid.git /tmp/ngx_txid
+RUN git clone https://github.com/streadway/ngx_txid.git /tmp/nginx-txid
 RUN git clone https://github.com/zebrafishlabs/nginx-statsd.git /tmp/nginx-statsd
 RUN apt-get build-dep -y nginx=${NGINX_VERSION}
 
@@ -27,7 +27,7 @@ COPY update_changelog.sh /tmp/update_changelog.sh
 COPY get-pip.py /tmp/get-pip.py
 
 RUN cd /tmp && apt-get source nginx=${NGINX_VERSION} && \
-  patch /tmp/${NGINX_SOURCE_FOLDER}/debian/rules < rules.patch \
+  patch /tmp/${NGINX_SOURCE_FOLDER}/debian/rules < /tmp/rules.patch && \
   /tmp/update_changelog.sh
 
 RUN python /tmp/get-pip.py && pip install envtpl
