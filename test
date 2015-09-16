@@ -2,6 +2,7 @@
 
 set -e
 
+ls /nginx-config/servers/*.tpl | xargs -I {} -n 1 envtpl {} --keep-template
 envtpl /nginx-config/nginx.conf.tpl --keep-template
 
 /usr/sbin/nginx -t -c /nginx-config/nginx.conf
