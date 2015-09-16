@@ -5,7 +5,7 @@
   {
     "type": "script",
     "name": "Build docker image",
-    "command": "docker build -t quay.io/everydayhero/nginx:master-$BUILDKITE_COMMIT .",
+    "command": "docker build -t quay.io/everydayhero/nginx .",
     "artifact_paths": "",
     "branch_configuration": "master",
     "env": {
@@ -24,7 +24,7 @@
   {
     "type": "script",
     "name": "Push new build",
-    "command": "docker push quay.io/everydayhero/nginx:master-$BUILDKITE_COMMIT",
+    "command": "docker push quay.io/everydayhero/nginx",
     "artifact_paths": "",
     "branch_configuration": "master",
     "env": {
