@@ -1,0 +1,40 @@
+[
+  {
+    "type": "waiter"
+  },
+  {
+    "type": "script",
+    "name": "Build docker image",
+    "command": "docker build -t 'quay.io/everydayhero/nginx:master-$BUILDKITE_COMMIT' .",
+    "artifact_paths": "",
+    "branch_configuration": "master",
+    "env": {
+
+    },
+    "timeout_in_minutes": null,
+    "agent_query_rules": [
+      "plain_utils=true"
+    ],
+    "concurrency": null,
+    "parallelism": null
+  },
+  {
+    "type": "waiter"
+  },
+  {
+    "type": "script",
+    "name": "Push new build",
+    "command": "docker push quay.io/everydayhero/nginx:master-$BUILDKITE_COMMIT",
+    "artifact_paths": "",
+    "branch_configuration": "master",
+    "env": {
+
+    },
+    "timeout_in_minutes": null,
+    "agent_query_rules": [
+      "plain_utils=true"
+    ],
+    "concurrency": null,
+    "parallelism": null
+  }
+]
