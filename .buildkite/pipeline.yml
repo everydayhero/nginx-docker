@@ -15,8 +15,8 @@ steps:
     type: "waiter"
 
   -
-  name: "Push new build"
-  command: "docker push quay.io/everydayhero/nginx"
-  branches: "master"
-  agents:
-    - "plain_utils=true"
+    name: "Push new build"
+    command: "docker push quay.io/everydayhero/nginx"
+    branches: "master"
+    agents:
+      - "plain_utils=true"
