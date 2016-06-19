@@ -1,8 +1,7 @@
 #!/bin/bash
 
-set -e
+set -eou pipefail
 
-ls /nginx-config/servers/*.tpl | xargs -I {} -n 1 envtpl {} --keep-template
-envtpl /nginx-config/nginx.conf.tpl --keep-template
+ls /nginx-config/nginx.conf.tpl /nginx-config/servers/*.tpl | xargs -I {} -n 1 envtpl {} --keep-template
 
-/usr/sbin/nginx -c /nginx-config/nginx.conf
+exec /usr/sbin/nginx -c /nginx-config/nginx.conf
