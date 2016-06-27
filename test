@@ -2,6 +2,12 @@
 
 set -eou pipefail
 
-ls /nginx-config/nginx.conf.tpl /nginx-config/servers/*.tpl | xargs -I {} -n 1 envtpl {} --keep-template
+envtpl() {
+  perl -p -e 's/\{\{\s?(\w+)\s?\}\}/(exists $ENV{$1} ? $ENV{$1} : "{{ $1 }}")/eg' < "${1}" > "${1%.tpl}"
+}
+
+export -f envtpl
+
+ls /nginx-config/nginx.conf.tpl /nginx-config/servers/*.tpl | xargs -I {} -n 1 bash -c 'envtpl {}'
 
 exec /usr/sbin/nginx -t -c /nginx-config/nginx.conf
