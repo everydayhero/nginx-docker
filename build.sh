@@ -131,13 +131,14 @@ echo "==> Compiling"
   --without-http_uwsgi_module \
   --without-http_scgi_module \
   --with-cc-opt='-O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic' \
+  --add-module="$BUILD_PATH/naxsi-$NAXSI_VERSION/naxsi_src" \
   --add-module="$BUILD_PATH/ngx_devel_kit-$NDK_VERSION" \
   --add-module="$BUILD_PATH/nginx-module-vts-$VTS_VERSION" \
   --add-module="$BUILD_PATH/lua-nginx-module-$LUA_VERSION" \
+  --add-module="$BUILD_PATH/lua-upstream-nginx-module-$LUA_UPSTREAM_VERSION" \
   --add-module="$BUILD_PATH/headers-more-nginx-module-$MORE_HEADERS_VERSION" \
   --add-module="$BUILD_PATH/ngx_txid-$NGINX_TXID" \
-  --add-module="$BUILD_PATH/nginx-statsd-$NGINX_STATSD" \
-  --add-module="$BUILD_PATH/lua-upstream-nginx-module-$LUA_UPSTREAM_VERSION"
+  --add-module="$BUILD_PATH/nginx-statsd-$NGINX_STATSD"
 
 make
 make install
