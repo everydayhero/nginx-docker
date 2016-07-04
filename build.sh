@@ -20,12 +20,12 @@ export BUILD_PATH=/tmp/build
 get_src() {
   local sha="$1"
   local url="$2"
-  local f=$(basename "$url")
+  local file=$(basename "$url")
 
-  curl -sSL "$url" -o "$f"
-  echo "$sha  $f" | sha256sum -c - || exit 10
-  tar xzf "$f"
-  rm -rf "$f"
+  curl -sSL "$url" -o "$file"
+  echo "$sha  $file" | sha256sum -c - || exit 10
+  tar xzf "$file"
+  rm -rf "$file"
 }
 
 mkdir -p "$BUILD_PATH"
