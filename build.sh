@@ -155,10 +155,9 @@ cp $BUILD_PATH/lua-resty-http-$LUA_RESTY_HTTP_VERSION/lib/resty/http.lua        
 cp $BUILD_PATH/lua-resty-http-$LUA_RESTY_HTTP_VERSION/lib/resty/http_headers.lua /usr/local/lib/lua/5.1
 
 echo "==> Installing GeoIP database"
-curl -sSL -o /etc/nginx/GeoIP.dat.gz       http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz
-curl -sSL -o /etc/nginx/GeoLiteCity.dat.gz http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz
-gunzip /etc/nginx/GeoIP.dat.gz
-gunzip /etc/nginx/GeoLiteCity.dat.gz
+mkdir -p /usr/share/GeoIP
+curl -sSL -o /usr/share/GeoIP/GeoIP.dat.gz http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz
+gunzip /usr/share/GeoIP/GeoIP.dat.gz
 
 echo "==> Cleaning up..."
 
