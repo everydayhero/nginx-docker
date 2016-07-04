@@ -7,4 +7,7 @@ RUN /tmp/build.sh
 RUN ln -sf /dev/stdout /var/log/nginx/access.log
 RUN ln -sf /dev/stderr /var/log/nginx/error.log
 
+ADD test  /usr/local/bin/test
+ADD serve /usr/local/bin/serve
+
 CMD ["nginx", "-g", "daemon off;"]
