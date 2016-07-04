@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -euo pipefail
+
+BASE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/.."
+
+IMAGE="$1"
+
+cd "${BASE_DIR}"
+
+IMAGE_TAG="1.11"
+IMAGE_NAME="quay.io/everydayhero/nginx"
+BUILD_NAME="${IMAGE}-build"
+
+docker rmi -f "${BUILD_NAME}" || true
+
+echo "+++ Build :nginx:"
+docker build --pull -t "${IMAGE_NAME}:${IMAGE_TAG}" .
+
+echo "+++ Push to registry"
+docker push "${IMAGE_NAME}:${IMAGE_TAG}"
+
+echo "+++ Cleanup"
+docker rmi -f "${BUILD_NAME}" || true

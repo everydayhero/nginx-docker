@@ -1,22 +1,7 @@
-# buildkite.yml
-
+---
 steps:
-  -
-    type: "waiter"
-
-  -
-    name: "Build docker image"
-    command: "docker build -t quay.io/everydayhero/nginx ."
-    branches: "master"
+  - name: ":docker: Build Image"
+    command: .buildkite/build
+    branches: master
     agents:
-      - "plain_utils=true"
-
-  -
-    type: "waiter"
-
-  -
-    name: "Push new build"
-    command: "docker push quay.io/everydayhero/nginx"
-    branches: "master"
-    agents:
-      - "plain_utils=true"
+      docker: builder
