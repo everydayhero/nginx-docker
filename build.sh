@@ -202,3 +202,6 @@ rm -rf /usr/share/{man,doc}
 rm -rf /tmp/* /var/tmp/*
 rm -rf /var/lib/apt/lists/*
 rm -rf /var/cache/apt/archives/*
+
+ln -sf /dev/stdout /var/log/nginx/access.log
+ln -sf /dev/stderr /var/log/nginx/error.log
