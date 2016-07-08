@@ -5,3 +5,4 @@ steps:
     branches: master
     agents:
       docker: builder
+      queue: native
