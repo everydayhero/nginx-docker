@@ -8,7 +8,7 @@ IMAGE="$1"
 
 cd "${BASE_DIR}"
 
-IMAGE_TAG="1.11"
+IMAGE_TAG="1.11.1"
 IMAGE_NAME="quay.io/everydayhero/nginx"
 BUILD_NAME="${IMAGE}-build"
 
