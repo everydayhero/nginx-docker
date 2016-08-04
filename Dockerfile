@@ -7,4 +7,4 @@ ADD serve /usr/local/bin/serve
 ADD build.sh /tmp
 RUN /tmp/build.sh
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["serve"]
