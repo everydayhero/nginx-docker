@@ -52,7 +52,7 @@ get_src 4a667f40f9f3917069db1dea1f2d5baa612f1fa19378aadf71502e846a424610 \
 get_src fed822e3f507801ce44964908eb1dca8ec58dc0a9bc47f7e7d00c6c4ef97f78b \
         "https://github.com/nbs-system/naxsi/archive/$NAXSI_VERSION.tar.gz"
 
-get_src 01e01b48addd87d75b1ccb830eecc5824b625c816b3e6fd93107247f00a95ab8 \
+get_src 847f52948f557b88ff2637c22271eba4ba631678d24cbdfa66b1f29d055c7f0d \
         "https://github.com/zebrafishlabs/nginx-statsd/archive/$NGINX_STATSD.tar.gz"
 
 cd "$BUILD_PATH/nginx-$NGINX_VERSION"
