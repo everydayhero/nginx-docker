@@ -7,11 +7,6 @@ BASE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/.."
 
 cd "${BASE_DIR}"
 
-IMAGE="nginx"
-IMAGE_TAG="1.11.3"
-IMAGE_NAME="everydayhero/${IMAGE}"
-BUILD_NAME="${IMAGE}-build"
-
 docker rmi -f "${BUILD_NAME}" || true
 
 echo "+++ Build :nginx:"
