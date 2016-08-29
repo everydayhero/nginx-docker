@@ -5,7 +5,7 @@ steps:
     branches: master
     agents:
       docker: builder
-      queue: *
+      queue: "*"
     env:
       IMAGE_TAG: 1.11.3
       IMAGE_NAME: "everydayhero/nginx"
@@ -16,7 +16,7 @@ steps:
     branches: master
     agents:
       docker: builder
-      queue: *
+      queue: "*"
     env:
       IMAGE_TAG: 1.11.3
       IMAGE_NAME: "everydayhero/nginx-base"
