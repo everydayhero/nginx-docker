@@ -49,7 +49,7 @@ apt-get install --no-install-recommends -y \
 get_src 4a667f40f9f3917069db1dea1f2d5baa612f1fa19378aadf71502e846a424610 \
         "http://nginx.org/download/nginx-$NGINX_VERSION.tar.gz"
 
-get_src fed822e3f507801ce44964908eb1dca8ec58dc0a9bc47f7e7d00c6c4ef97f78b \
+get_src 45dd0df7a6b0b6aa9c64eb8c39a8e294d659d87fb18e192cf58f1402f3cdb0a8 \
         "https://github.com/nbs-system/naxsi/archive/$NAXSI_VERSION.tar.gz"
 
 get_src 847f52948f557b88ff2637c22271eba4ba631678d24cbdfa66b1f29d055c7f0d \
