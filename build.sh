@@ -3,7 +3,7 @@
 set -euo pipefail
 
 export NGINX_VERSION=1.11.3
-export NAXSI_VERSION=0.55rc2
+export NAXSI_VERSION=0.55.1
 export NGINX_STATSD=07dcefdab2838b5aa68f1233a44fedcda8052b7f
 
 export BUILD_PATH=/tmp/build
