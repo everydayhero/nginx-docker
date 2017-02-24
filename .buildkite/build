@@ -2,18 +2,8 @@
 
 set -euo pipefail
 
-BASE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/.."
+echo "~~~ Build :nginx:"
+docker build --pull -t "$1" .
 
-
-cd "${BASE_DIR}"
-
-docker rmi -f "${BUILD_NAME}" || true
-
-echo "+++ Build :nginx:"
-docker build --pull -t "${IMAGE_NAME}:${IMAGE_TAG}" .
-
-echo "+++ Push to registry"
-docker push "${IMAGE_NAME}:${IMAGE_TAG}"
-
-echo "+++ Cleanup"
-docker rmi -f "${BUILD_NAME}" || true
+echo "~~~ Push to registry"
+docker push "$1"
