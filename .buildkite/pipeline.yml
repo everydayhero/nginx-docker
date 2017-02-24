@@ -1,16 +1,5 @@
 ---
 steps:
-  - name: ":docker: Build Image(deprecated)"
-    command: .buildkite/build
-    branches: master
-    agents:
-      docker: builder
-      queue: "*"
-    env:
-      IMAGE_TAG: 1.11.3
-      IMAGE_NAME: "everydayhero/nginx"
-      BUILD_NAME: nginx-build
-
   - name: ":docker: Build Image"
     command: .buildkite/build
     branches: master
