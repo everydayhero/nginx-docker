@@ -1,13 +1,8 @@
 ---
 steps:
   - name: ":docker: Build Image"
-    command: .buildkite/build
+    command: .buildkite/build everydayhero/nginx-base:1.11.3
     branches: master
     agents:
-      docker: builder
-      queue: "*"
-    env:
-      IMAGE_TAG: 1.11.3
-      IMAGE_NAME: "everydayhero/nginx-base"
-      BUILD_NAME: nginx-base-build
+      queue: build
 
