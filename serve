@@ -3,11 +3,11 @@
 set -eou pipefail
 
 envtpl() {
-  perl -p -e 's/\{\{\s?(\w+)\s?\}\}/(exists $ENV{$1} ? $ENV{$1} : (print "missing variable $1\n" and exit 1))/eg' < "${1}" > "${1%.tpl}"
+  perl -p -e 's/\{\{\s?(\w+)\s?\}\}/(exists $ENV{$1} ? $ENV{$1} : (say STDERR "missing variable $1\n" and exit 1))/eg' < "${1}" > "${1%.tpl}"
 }
 
 export -f envtpl
 
-ls /nginx-config/nginx.conf.tpl /nginx-config/servers/*.tpl | xargs -I {} -n 1 bash -c 'envtpl {}'
+find /nginx-config/ -name '*.tpl' | xargs -I {} -n 1 bash -c 'envtpl {}'
 
 exec /usr/sbin/nginx -c /nginx-config/nginx.conf
